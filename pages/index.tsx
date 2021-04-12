@@ -11,7 +11,7 @@ const Home = () => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
-    ref.current.changeValue(e.target.value);
+    (ref.current as any).changeValue(e.target.value);
   };
 
   return (
