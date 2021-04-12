@@ -1,11 +1,17 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import DynamicText from "../components/DynamicText";
-import { Input } from "@chakra-ui/react"
+import DynamicText from "components/DynamicText";
+import { Input } from "@chakra-ui/react";
+import { useRef } from "react";
+import Nav from "components/Nav";
 
 const Home = () => {
+  type DynamicTextHandle = React.ElementRef<typeof DynamicText>;
+  const ref = useRef<DynamicTextHandle>();
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
+    ref.current.changeValue(e.target.value);
   };
 
   return (
@@ -15,9 +21,11 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <DynamicText />
-        <Input placeholder="" onChange={onChange} />
+      <Nav />
+
+      <main className={styles.main} style={{maxWidth:"220px"}}>
+        <DynamicText ref={ref} />
+        <Input onChange={onChange} />
       </main>
     </div>
   );
