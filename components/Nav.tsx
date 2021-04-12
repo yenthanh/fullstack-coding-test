@@ -6,7 +6,7 @@ import { Button, toast, useToast } from "@chakra-ui/react";
 import router from "next/router";
 
 const Nav = () => {
-  const { isAdmin, signout } = useAuth();
+  const { signout } = useAuth();
   const toast = useToast();
 
   return (
